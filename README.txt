@@ -1,852 +1,206 @@
-BFGMiner:
-St. Barbara's Faithfully Glorified Mining Initiative Naturally Exceeding Rivals
-or Basically a Freaking Good Miner
+Readme.txt
 
-This is a multi-threaded multi-pool ASIC, FPGA, GPU and CPU miner with dynamic
-clocking, monitoring, and fanspeed support for bitcoin. Do not use on multiple
-block chains at the same time!
+iSpace Miner For Windows v1.0
 
-This code is provided entirely free of charge by the programmer in his spare
-time so donations would be greatly appreciated. Please consider donating to the
-address below.
+I created this because of the lack of Windows software to aid in mining Altcoins. I specifically created it for use with
+iSpace.co.uk but could be used with other pools. In the future I will be adding support for different multipools and
+other specifically selected pools.
 
-Luke-Jr <luke-jr+bfgminer@utopios.org>
-1QATWksNFGeUJCWBrN4g6hGM178Lovm7Wh
+You are welcome to fork this software and make your own version of it all I ask is either to keep the donation button or
+to make a small donation of your own to cover my time in coding this application.
 
-DOWNLOADS:
+This software is version 1.0 and should be taken as currently being in Beta so you might expect some bugs but I have
+tried to iron out as many as I could before release.
 
-http://luke.dashjr.org/programs/bitcoin/files/bfgminer
+Thanks for taking the time to try my software you can contact me at phil@philipsempers.com or via Twitter @BitcoinMayhem
 
-GIT TREE:
+GNU Public User License follows:
 
-https://github.com/luke-jr/bfgminer
+GNU GENERAL PUBLIC LICENSE
 
-Bug reports:
+Version 3, 29 June 2007
 
-https://github.com/luke-jr/bfgminer/issues
+Copyright © 2007 Free Software Foundation, Inc. <http://fsf.org/>
 
-IRC Channel:
+Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
 
-irc://irc.freenode.net/eligius
+Preamble
 
-License: GPLv3.  See COPYING for details.
+The GNU General Public License is a free, copyleft license for software and other kinds of works.
 
-SEE ALSO README.ASIC, README.FPGA, README.GPU, README.RPC, AND README.scrypt FOR
-MORE INFORMATION ON EACH.
+The licenses for most software and other practical works are designed to take away your freedom to share and change the works. By contrast, the GNU General Public License is intended to guarantee your freedom to share and change all versions of a program--to make sure it remains free software for all its users. We, the Free Software Foundation, use the GNU General Public License for most of our software; it applies also to any other work released this way by its authors. You can apply it to your programs, too.
 
----
+When we speak of free software, we are referring to freedom, not price. Our General Public Licenses are designed to make sure that you have the freedom to distribute copies of free software (and charge for them if you wish), that you receive source code or can get it if you want it, that you can change the software or use pieces of it in new free programs, and that you know you can do these things.
 
-EXECUTIVE SUMMARY ON USAGE:
+To protect your rights, we need to prevent others from denying you these rights or asking you to surrender the rights. Therefore, you have certain responsibilities if you distribute copies of the software, or if you modify it: responsibilities to respect the freedom of others.
 
-Single pool:
+For example, if you distribute copies of such a program, whether gratis or for a fee, you must pass on to the recipients the same freedoms that you received. You must make sure that they, too, receive or can get the source code. And you must show them these terms so they know their rights.
 
-bfgminer -o http://pool:port -u username -p password
+Developers that use the GNU GPL protect your rights with two steps: (1) assert copyright on the software, and (2) offer you this License giving you legal permission to copy, distribute and/or modify it.
 
-Multiple pools:
+For the developers' and authors' protection, the GPL clearly explains that there is no warranty for this free software. For both users' and authors' sake, the GPL requires that modified versions be marked as changed, so that their problems will not be attributed erroneously to authors of previous versions.
 
-bfgminer -o http://pool1:port -u pool1username -p pool1password -o http://pool2:port -u pool2usernmae -p pool2password
+Some devices are designed to deny users access to install or run modified versions of the software inside them, although the manufacturer can do so. This is fundamentally incompatible with the aim of protecting users' freedom to change the software. The systematic pattern of such abuse occurs in the area of products for individuals to use, which is precisely where it is most unacceptable. Therefore, we have designed this version of the GPL to prohibit the practice for those products. If such problems arise substantially in other domains, we stand ready to extend this provision to those domains in future versions of the GPL, as needed to protect the freedom of users.
 
-Single pool with a standard http proxy:
+Finally, every program is threatened constantly by software patents. States should not allow patents to restrict development and use of software on general-purpose computers, but in those that do, we wish to avoid the special danger that patents applied to a free program could make it effectively proprietary. To prevent this, the GPL assures that patents cannot be used to render the program non-free.
 
-bfgminer -o http://pool:port -x http://proxy:port -u username -p password
+The precise terms and conditions for copying, distribution and modification follow.
 
-Single pool with a socks5 proxy:
+TERMS AND CONDITIONS
 
-bfgminer -o http://pool:port -x socks5://proxy:port -u username -p password
+0. Definitions.
+“This License” refers to version 3 of the GNU General Public License.
 
-The list of proxy types are:
- http:    standard http 1.1 proxy
- socks4:  socks4 proxy
- socks5:  socks5 proxy
- socks4a: socks4a proxy
- socks5h: socks5 proxy using a hostname
+“Copyright” also means copyright-like laws that apply to other kinds of works, such as semiconductor masks.
 
-Proxy support requires cURL version 7.21.7 or newer.
+“The Program” refers to any copyrightable work licensed under this License. Each licensee is addressed as “you”. “Licensees” and “recipients” may be individuals or organizations.
 
-If you specify the --socks-proxy option to BFGMiner, it will only be applied to
-all pools that don't specify their own proxy setting like above
+To “modify” a work means to copy from or adapt all or part of the work in a fashion requiring copyright permission, other than the making of an exact copy. The resulting work is called a “modified version” of the earlier work or a work “based on” the earlier work.
 
+A “covered work” means either the unmodified Program or a work based on the Program.
 
-After saving configuration from the menu ([S],[W]) you do not need to give
-BFGMiner any arguments, it will load your configuration instead.
+To “propagate” a work means to do anything with it that, without permission, would make you directly or secondarily liable for infringement under applicable copyright law, except executing it on a computer or modifying a private copy. Propagation includes copying, distribution (with or without modification), making available to the public, and in some countries other activities as well.
 
-Any configuration file may also contain a single
-	"include" : "filename"
-to recursively include another configuration file.
-Writing the configuration will save all settings from all files to the output
-configuration file.
+To “convey” a work means any kind of propagation that enables other parties to make or receive copies. Mere interaction with a user through a computer network, with no transfer of a copy, is not conveying.
 
+An interactive user interface displays “Appropriate Legal Notices” to the extent that it includes a convenient and prominently visible feature that (1) displays an appropriate copyright notice, and (2) tells the user that there is no warranty for the work (except to the extent that warranties are provided), that licensees may convey the work under this License, and how to view a copy of this License. If the interface presents a list of user commands or options, such as a menu, a prominent item in the list meets this criterion.
 
----
-BUILDING BFGMINER
+1. Source Code.
+The “source code” for a work means the preferred form of the work for making modifications to it. “Object code” means any non-source form of a work.
 
-Everything you probably want, condensed:
-	build-essential autoconf automake libtool pkg-config libcurl4-gnutls-dev
-	libjansson-dev uthash-dev libncursesw5-dev libudev-dev libusb-1.0-0-dev
-	libevent-dev libmicrohttpd-dev hidapi
+A “Standard Interface” means an interface that either is an official standard defined by a recognized standards body, or, in the case of interfaces specified for a particular programming language, one that is widely used among developers working in that language.
 
-Dependencies:
-	autoconf             http://www.gnu.org/software/autoconf/
-	automake             http://www.gnu.org/software/automake/
-	libtool              http://www.gnu.org/software/libtool/
-	pkg-config           http://www.freedesktop.org/wiki/Software/pkg-config
-	...or pkgconf        https://github.com/pkgconf/pkgconf
+The “System Libraries” of an executable work include anything, other than the work as a whole, that (a) is included in the normal form of packaging a Major Component, but which is not part of that Major Component, and (b) serves only to enable use of the work with that Major Component, or to implement a Standard Interface for which an implementation is available to the public in source code form. A “Major Component”, in this context, means a major essential component (kernel, window system, and so on) of the specific operating system (if any) on which the executable work runs, or a compiler used to produce the work, or an object code interpreter used to run it.
 
-	libcurl4-gnutls-dev  http://curl.haxx.se/libcurl/
+The “Corresponding Source” for a work in object code form means all the source code needed to generate, install, and (for an executable work) run the object code and to modify the work, including scripts to control those activities. However, it does not include the work's System Libraries, or general-purpose tools or generally available free programs which are used unmodified in performing those activities but which are not part of the work. For example, Corresponding Source includes interface definition files associated with source files for the work, and the source code for shared libraries and dynamically linked subprograms that the work is specifically designed to require, such as by intimate data communication or control flow between those subprograms and other parts of the work.
 
-	libjansson-dev 2.0+  http://www.digip.org/jansson/
-	
-	uthash-dev 1.9.4+    http://troydhanson.github.io/uthash/
+The Corresponding Source need not include anything that users can regenerate automatically from other parts of the Corresponding Source.
 
-Optional Dependencies:
-	Text-User-Interface (TUI): curses dev library; any one of:
-	  libncurses5-dev    http://www.gnu.org/software/ncurses/ (Linux and Mac)
-	  libncursesw5-dev       ^ same
-	  libpdcurses        http://pdcurses.sourceforge.net/ (Linux/Mac/Windows)
-
-	Multiple ASIC/FPGA autodetection: any one of:
-	  sysfs              (built-in to most Linux kernels, just mount on /sys)
-	  libudev-dev        http://www.freedesktop.org/software/systemd/libudev/
-	
-	HashBuster Nano & NanoFury USB devices:
-	  hidapi             https://github.com/signal11/hidapi
-	
-	getwork server for Block Erupter Blades:
-	  libmicrohttpd-dev 0.9.5+  http://www.gnu.org/software/libmicrohttpd/
-	
-	Stratum proxy:
-	  libevent 2.0.3+    http://libevent.org/
-
-	HashBuster Micro, Klondike, X6500 and ZTEX FPGA boards:
-	  libusb-1.0-0-dev   http://www.libusb.org/
-
-	Video card GPU mining (free):
-	  llvm 3.3+          http://llvm.org/
-	  clang 3.3+         http://clang.llvm.org/
-	  libclc             http://libclc.llvm.org/
-	  Mesa 9.2.0+        http://www.mesa3d.org/
-	
-	ATi/AMD video card GPU mining (non-free):
-	  AMD APP SDK        http://developer.amd.com/tools/heterogeneous-computing/amd-accelerated-parallel-processing-app-sdk/
-
-	CPU mining optimized assembly algorithms:
-	  yasm 1.0.1+        http://yasm.tortall.net/
-
-
-BFGMiner specific configuration options:
-	--disable-avalon        Compile support for Avalon (default enabled)
-	--enable-cpumining      Build with cpu mining support(default disabled)
-	--enable-opencl         Compile support for OpenCL (default disabled)
-	--disable-adl           Build without ADL monitoring (default enabled)
-	--disable-bitfury       Compile support for Bitfury (default enabled)
-	--enable-bfsb           Compile support for BFSB (default disabled)
-	--disable-bigpic        Compile support for Big Picture Mining USB (default
-	                        enabled)
-	--disable-littlefury    Compile support for LittleFury (default enabled)
-	--disable-nanofury      Compile support for NanoFury (default enabled)
-	--disable-hashbuster    Compile support for HashBuster Nano (default
-	                        enabled)
-	--disable-hashbuster2   Compile support for HashBuster Micro (default if
-	                        libusb)
-	--enable-metabank       Compile support for Metabank (default disabled)
-	--disable-bitforce      Compile support for BitForce (default enabled)
-	--disable-icarus        Compile support for Icarus (default enabled)
-	--disable-klondike      Compile support for Klondike (default enabled)
-	--enable-knc            Compile support for KnC (default disabled)
-	--disable-modminer      Compile support for ModMiner (default enabled)
-	--disable-x6500         Compile support for X6500 (default enabled)
-	--disable-ztex          Compile support for ZTEX (default if libusb)
-	--enable-scrypt         Compile support for scrypt mining (default disabled)
-	--with-system-libblkmaker  Use system libblkmaker rather than bundled one
-	                           (default disabled)
-	--with-udevrulesdir=DIR Install udev rules into this directory
-	--without-sensors       Build with libsensors monitoring (default enabled)
-	--without-curses        Compile support for curses TUI (default enabled)
-	--without-libmicrohttpd Compile support for libmicrohttpd getwork server
-	                        (default enabled)
-	--without-libevent      Compile support for libevent stratum server (default
-	                        enabled)
-	--without-libusb        Compile using libusb (default enabled)
-	--without-libudev       Autodetect FPGAs using libudev (default enabled)
-
-Basic *nix build instructions:
-
-./autogen.sh    # only needed if building from git repo
-./configure
-make
-
-No installation is necessary. You may run BFGMiner from the build directory
-directly.
-
-On Mac OS X, you can use Homebrew to install the dependency libraries. When you
-are ready to build BFGMiner, you may need to point the configure script at one
-or more pkg-config paths. For example:
-	./configure PKG_CONFIG_PATH=/usr/local/opt/curl/lib/pkgconfig:/usr/local/opt/jansson/lib/pkgconfig
-
-Native WIN32 build instructions: see windows-build.txt
-
-If you build BFGMiner from source, it is recommended that you run it from the
-build directory. On *nix, you will usually need to prepend your command with a
-path like this (if you are in the bfgminer directory already): ./bfgminer
-To install system wide run 'sudo make install' or 'make install' as root. You
-can then run from any terminal.
-
----
-
-Usage instructions:  Run "bfgminer --help" to see options:
-
-Usage: bfgminer [-DdElmpPQqUsTouOchnV]
-
-Options for both config file and command line:
---api-allow         Allow API access (if enabled) only to the given list of [W:]IP[/Prefix] address[/subnets]
-                    This overrides --api-network and you must specify 127.0.0.1 if it is required
-                    W: in front of the IP address gives that address privileged access to all api commands
---api-description   Description placed in the API status header (default: BFGMiner version)
---api-groups        API one letter groups G:cmd:cmd[,P:cmd:*...]
-                    See README.RPC for usage
---api-listen        Listen for API requests (default: disabled)
-                    By default any command that does not just display data returns access denied
-                    See --api-allow to overcome this
---api-mcast         Enable API Multicast listener, default: disabled
---api-mcast-addr <arg> API Multicast listen address (default: "224.0.0.75")
---api-mcast-code <arg> Code expected in the API Multicast message, don't use '-' (default: "FTW")
---api-mcast-port <arg> API Multicast listen port (default: 4028)
---api-network       Allow API (if enabled) to listen on/for any address (default: only 127.0.0.1)
---api-port          Port number of miner API (default: 4028)
---balance           Change multipool strategy from failover to even share balance
---benchmark         Run BFGMiner in benchmark mode - produces no shares
---chroot-dir <arg>  Chroot to a directory right after startup
---cmd-idle <arg>    Execute a command when a device is allowed to be idle (rest or wait)
---cmd-sick <arg>    Execute a command when a device is declared sick
---cmd-dead <arg>    Execute a command when a device is declared dead
---coinbase-addr <arg> Set coinbase payout address for solo mining
---coinbase-sig <arg> Set coinbase signature when possible
---compact           Use compact display without per device statistics
---debug|-D          Enable debug output
---debuglog          Enable debug logging
---device|-d <arg>   Enable only devices matching pattern (default: all)
---disable-rejecting Automatically disable pools that continually reject shares
---http-port <arg>   Port number to listen on for HTTP getwork miners (-1 means disabled) (default: -1)
---expiry|-E <arg>   Upper bound on how many seconds after getting work we consider a share from it stale (w/o longpoll active) (default: 120)
---expiry-lp <arg>   Upper bound on how many seconds after getting work we consider a share from it stale (with longpoll active) (default: 3600)
---failover-only     Don't leak work to backup pools when primary pool is lagging
---force-dev-init    Always initialize devices when possible (such as bitstream uploads to some FPGAs)
---kernel-path|-K <arg> Specify a path to where bitstream and kernel files are (default: "/usr/local/bin")
---load-balance      Change multipool strategy from failover to quota based balance
---log|-l <arg>      Interval in seconds between log output (default: 5)
---log-file|-L <arg> Append log file for output messages
---log-microseconds  Include microseconds in log output
---monitor|-m <arg>  Use custom pipe cmd for output messages
---net-delay         Impose small delays in networking to avoid overloading slow routers
---no-gbt            Disable getblocktemplate support
---no-getwork        Disable getwork support
---no-longpoll       Disable X-Long-Polling support
---no-restart        Do not attempt to restart devices that hang
---no-stratum        Disable Stratum detection
---no-submit-stale   Don't submit shares if they are detected as stale
---no-opencl-binaries Don't attempt to use or save OpenCL kernel binaries
---no-unicode        Don't use Unicode characters in TUI
---noncelog <arg>    Create log of all nonces found
---pass|-p <arg>     Password for bitcoin JSON-RPC server
---per-device-stats  Force verbose mode and output per-device statistics
---pool-proxy|-x     Proxy URI to use for connecting to just the previous-defined pool
---protocol-dump|-P  Verbose dump of protocol-level activities
---queue|-Q <arg>    Minimum number of work items to have queued (0 - 10) (default: 1)
---quiet|-q          Disable logging output, display status and errors
---real-quiet        Disable all output
---remove-disabled   Remove disabled devices entirely, as if they didn't exist
---request-diff <arg> Request a specific difficulty from pools (default: 1.0)
---retries <arg>     Number of times to retry failed submissions before giving up (-1 means never) (default: -1)
---rotate <arg>      Change multipool strategy from failover to regularly rotate at N minutes (default: 0)
---round-robin       Change multipool strategy from failover to round robin on failure
---scan|-S <arg>     Configure how to scan for mining devices
---scan-time|-s <arg> Upper bound on time spent scanning current work, in seconds (default: 60)
---sched-start <arg> Set a time of day in HH:MM to start mining (a once off without a stop time)
---sched-stop <arg>  Set a time of day in HH:MM to stop mining (will quit without a start time)
---scrypt            Use the scrypt algorithm for mining (non-bitcoin)
---set-device <arg>  Set default parameters on devices; eg, NFY:osc6_bits=50
---setuid <arg>      Username of an unprivileged user to run as
---sharelog <arg>    Append share log to file
---shares <arg>      Quit after mining N shares (default: unlimited)
---show-processors   Show per processor statistics in summary
---skip-security-checks <arg> Skip security checks sometimes to save bandwidth; only check 1/<arg>th of the time (default: never skip)
---socks-proxy <arg> Set socks proxy (host:port) for all pools without a proxy specified
---stratum-port <arg> Port number to listen on for stratum miners (-1 means disabled) (default: -1)
---submit-threads    Minimum number of concurrent share submissions (default: 64)
---syslog            Use system log for output messages (default: standard error)
---temp-cutoff <arg> Maximum temperature devices will be allowed to reach before being disabled, one value or comma separated list
---temp-hysteresis <arg> Set how much the temperature can fluctuate outside limits when automanaging speeds (default: 3)
---temp-target <arg> Target temperature when automatically managing fan and clock speeds
---text-only|-T      Disable ncurses formatted screen output
---unicode           Use Unicode characters in TUI
---url|-o <arg>      URL for bitcoin JSON-RPC server
---user|-u <arg>     Username for bitcoin JSON-RPC server
---verbose           Log verbose output to stderr as well as status output
---weighed-stats     Display statistics weighed to difficulty 1
---userpass|-O <arg> Username:Password pair for bitcoin JSON-RPC server
-Options for command line only:
---config|-c <arg>   Load a JSON-format configuration file
-See example.conf for an example configuration.
---help|-h           Print this message
---version|-V        Display version and exit
-
-
-GPU only options:
-
---auto-fan          Automatically adjust all GPU fan speeds to maintain a target temperature
---auto-gpu          Automatically adjust all GPU engine clock speeds to maintain a target temperature
---gpu-threads|-g <arg> Number of threads per GPU (1 - 10) (default: 2)
---gpu-dyninterval <arg> Set the refresh interval in ms for GPUs using dynamic intensity (default: 7)
---gpu-engine <arg>  GPU engine (over)clock range in MHz - one value, range and/or comma separated list (e.g. 850-900,900,750-850)
---gpu-fan <arg>     GPU fan percentage range - one value, range and/or comma separated list (e.g. 25-85,85,65)
---gpu-map <arg>     Map OpenCL to ADL device order manually, paired CSV (e.g. 1:0,2:1 maps OpenCL 1 to ADL 0, 2 to 1)
---gpu-memclock <arg> Set the GPU memory (over)clock in MHz - one value for all or separate by commas for per card.
---gpu-memdiff <arg> Set a fixed difference in clock speed between the GPU and memory in auto-gpu mode
---gpu-platform <arg> Select OpenCL platform ID to use for GPU mining
---gpu-powertune <arg> Set the GPU powertune percentage - one value for all or separate by commas for per card.
---gpu-reorder       Attempt to reorder GPU devices according to PCI Bus ID
---gpu-vddc <arg>    Set the GPU voltage in Volts - one value for all or separate by commas for per card.
---intensity|-I <arg> Intensity of GPU scanning (d or -10 -> 10, default: d to maintain desktop interactivity)
---kernel|-k <arg>   Override kernel to use (diablo, poclbm, phatk or diakgcn) - one value or comma separated
---no-adl            Disable the ATI display library used for monitoring and setting GPU parameters
---temp-overheat <arg> Overheat temperature when automatically managing fan and GPU speeds (default: 85)
---vectors|-v <arg>  Override detected optimal vector (1, 2 or 4) - one value or comma separated list
---worksize|-w <arg> Override detected optimal worksize - one value or comma separated list
-
-GPU mining is disabled by default for SHA256d if you have any dedicated mining
-devices, but can be enabled explicitly specifying the -S opencl:auto option.
-
-See README.GPU for more information regarding GPU mining.
-
-scrypt only options:
-
---lookup-gap <arg>  Set GPU lookup gap for scrypt mining, comma separated
---shaders <arg>     GPU shaders per card for tuning scrypt, comma separated
---thread-concurrency <arg> Set GPU thread concurrency for scrypt mining, comma separated
-
-See README.scrypt for more information regarding (non-bitcoin) scrypt mining.
-
-
-To use ASICs or FPGAs, you will need to be sure the user BFGMiner is running as
-has appropriate permissions. This varies by operating system.
-On Linux, with BFGMiner's udev rules: sudo usermod <username> -a -G video
-Note that on GNU/Linux systems, you will usually need to login again before
-group changes take effect.
-
-By default, BFGMiner will scan for autodetected devices. If you want to prevent
-BFGMiner from doing this, you can use "-S noauto". If you want to probe all
-serial ports, you can use "-S all"; note that this may write data to non-mining
-devices which may then behave in unexpected ways!
-
-On Linux, <arg> is usually of the format /dev/ttyUSBn
-On Mac OS X, <arg> is usually of the format /dev/cu.usb*
-On Windows, <arg> is usually of the format \\.\COMn
-(where n = the correct device number for the device)
-
-The official supplied binaries are compiled with support for all ASICs/FPGAs.
-To force the code to only attempt detection with a specific driver,
-prepend the argument with the driver name followed by an "at" symbol.
-For example, "icarus@/dev/ttyUSB0" or "bitforce@\\.\COM5"
-or using the short name: "ica@/dev/ttyUSB0" or "bfl@\\.\COM5"
-
-Some FPGAs do not have non-volatile storage for their bitstreams and must be
-programmed every power cycle, including first use. To use these devices, you
-must download the proper bitstream from the vendor's website and copy it to the
-"bitstreams" directory into your BFGMiner application directory.
-
-See README.ASIC and README.FPGA for more information regarding these.
-
-See README.CPU for information regarding CPU mining.
-
----
-
-WHILE RUNNING:
-
-The following options are available while running with a single keypress:
-
-[M]anage devices [P]ool management [S]ettings [D]isplay options  [H]elp [Q]uit
-
-M gives you something like:
-
-Select processor to manage using up/down arrow keys
- BFL 0a: 78.0C |  3.64/ 3.70/ 2.91Gh/s | A:46 R:0+0(none) HW:  2/none
-  BitFORCE SHA256 SC from Butterfly Labs
-Serial: FTWN6T67
-
-[D]isable
-Or press Enter when done
-
-
-P gives you:
-
-Current pool management strategy: Failover
-[F]ailover only disabled
-[A]dd pool [R]emove pool [D]isable pool [E]nable pool
-[C]hange management strategy [S]witch pool [I]nformation
-
-
-S gives you:
-
-[L]ongpoll: On
-[Q]ueue: 1
-[S]cantime: 60
-[E]xpiry: 120
-[R]etries: -1
-[W]rite config file
-[B]FGMiner restart
-
-
-D gives you:
-
-[N]ormal [C]lear [S]ilent mode (disable all output)
-[D]ebug:off
-[P]er-device:off
-[Q]uiet:off
-[V]erbose:off
-[R]PC debug:off
-[W]orkTime details:off
-co[M]pact: off
-[L]og interval:5
-
-
-Q quits the application.
-
-
-The running log shows output similar to that below:
-
- [2013-02-13 00:26:30] Accepted 1758e8df BFL 0  pool 0 Diff 10/1
- [2013-02-13 00:26:32] Accepted 1d9a2199 MMQ 0a pool 0 Diff 8/1
- [2013-02-13 00:26:33] Accepted b1304924 ZTX 0  pool 0 Diff 1/1
- [2013-02-13 00:26:33] Accepted c3ad22f4 XBS 0b pool 0 Diff 1/1
-
-The 8 byte hex value are the 2nd set of 32 bits from the share submitted to the
-pool. The 2 diff values are the actual difficulty target that share reached
-followed by the difficulty target the pool is currently asking for.
-
----
-Also many issues and FAQs are covered in the forum threads
-dedicated to this program,
-	https://bitcointalk.org/?topic=78192
-	https://bitcointalk.org/?topic=168174
-
-The block display shows:
-Block: ...1b89f8d3 #217364  Diff:7.67M (54.93Th/s)  Started: [17:17:22]
-
-This shows a short stretch of the current block, the next block's height and
-difficulty (including the network hashrate that difficulty represents), and when
-the search for the new block started.
-
-The BFGMiner status line shows:
- ST:1  F:0  NB:1  AS:0  BW:[ 75/241 B/s]  E:2.42  I:12.99mBTC/hr  BS:2.71k
-
-ST is STaged work items (ready to use).
-F  is network Failure occasions (server down or slow to provide work)
-NB is New Blocks detected on the network
-AS is Active Submissions (shares in the process of submitting)
-BW is BandWidth usage on the network (received/sent)
-E  is Efficiency defined as number of shares accepted (multiplied by their
-          difficulty) per 2 KB of bandwidth
-I  is expected Income, calculated by actual shares submitted in 100% PPS value
-          (assumes Bitcoin, does not account for altcoin conversions!)
-BS is the all time Best Share difficulty you've found
-
-The totals line shows the following:
- 6/32   75.0C | 171.3/170.8/171.2Gh/s | A:729 R:8+0(.01%) HW:0/.81%
-
-Each column is as follows:
-  The number of devices and processors currently mining
-  Hottest temperature reported by any processor
-  5 second exponentially decaying average hash rate
-  An all time average hash rate
-  An all time average hash rate based on actual nonces found, adjusted for pool
-      reject and stale rate
-  The number of Accepted shares
-  The number of Rejected shares and stale shares discarded (never submitted),
-      and the percentage these are of total found.
-  The number of HardWare errors, and percentage invalid of nonces returned
-
-Each device shows:
- BFL 2: 74.0C | 51.97/58.90/57.17Gh/s | A:847 R:15+0(.54%) HW:496/.91%
-
-Columns are the same as in the totals line.
-
-
----
-MULTIPOOL
-
-FAILOVER STRATEGIES WITH MULTIPOOL:
-A number of different strategies for dealing with multipool setups are
-available. Each has their advantages and disadvantages so multiple strategies
-are available by user choice, as per the following list:
-
-FAILOVER:
-The default strategy is failover. This means that if you input a number of
-pools, it will try to use them as a priority list, moving away from the 1st
-to the 2nd, 2nd to 3rd and so on. If any of the earlier pools recover, it will
-move back to the higher priority ones.
-
-ROUND ROBIN:
-This strategy only moves from one pool to the next when the current one falls
-idle and makes no attempt to move otherwise.
-
-ROTATE:
-This strategy moves at user-defined intervals from one active pool to the next,
-skipping pools that are idle.
-
-LOAD BALANCE:
-This strategy sends work to all the pools on a quota basis. By default, all
-pools are allocated equal quotas unless specified with --quota. This
-apportioning of work is based on work handed out, not shares returned so is
-independent of difficulty targets or rejected shares. While a pool is disabled
-or dead, its quota is dropped until it is re-enabled. Quotas are forward
-looking, so if the quota is changed on the fly, it only affects future work.
-If all pools are set to zero quota or all pools with quota are dead, it will
-fall back to a failover mode. See quota below for more information.
-
-The failover-only flag has special meaning in combination with load-balance
-mode and it will distribute quota back to priority pool 0 from any pools that
-are unable to provide work for any reason so as to maintain quota ratios
-between the rest of the pools.
-
-BALANCE:
-This strategy monitors the amount of difficulty 1 shares solved for each pool
-and uses it as a basis for trying to doing the same amount of work for each
-pool.
-
-
----
-SOLO MINING
-
-BFGMiner supports solo mining with any GBT-compatible bitcoin node (such as
-bitcoind). To use this mode, you need to specify the URL of your bitcoind node
-using the usual pool options (--url, --userpass, etc), and the --coinbase-addr
-option to specify the Bitcoin address you wish to receive the block rewards
-mined. If you are solo mining with more than one instance of BFGMiner (or any
-other software) per payout address, you must also specify data using the
---coinbase-sig option to ensure each miner is working on unique work. Note
-that this data will be publicly seen if your miner finds a block using any
-GBT-enabled pool, even when not solo mining (such as failover). If your
-bitcoin node does not support longpolling (for example, bitcoind 0.8.x), you
-should consider setting up a failover pool to provide you with block
-notifications. Note that solo mining does not use shares, so BFGMiner's adjusted
-hashrate (third column) may suddenly drop to zero if a block you submit is
-rejected; this does not indicate that it has stopped mining.
-
-Example solo mining usage:
-
-bfgminer -o http://localhost:8332 -u username -p password \
-    --coinbase-addr 1QATWksNFGeUJCWBrN4g6hGM178Lovm7Wh \
-    --coinbase-sig "rig1: This is Joe's block!"
-
-
----
-QUOTAS
-
-The load-balance multipool strategy works off a quota based scheduler. The
-quotas handed out by default are equal, but the user is allowed to specify any
-arbitrary ratio of quotas. For example, if all the quota values add up to 100,
-each quota value will be a percentage, but if 2 pools are specified and pool0
-is given a quota of 1 and pool1 is given a quota of 9, pool0 will get 10% of
-the work and pool1 will get 90%. Quotas can be changed on the fly with RPC,
-and do not act retrospectively. Setting a quota to zero will effectively
-disable that pool unless all other pools are disabled or dead. In that
-scenario, load-balance falls back to regular failover priority-based strategy.
-While a pool is dead, it loses its quota and no attempt is made to catch up
-when it comes back to life.
-
-To specify quotas on the command line, pools should be specified with a
-semicolon separated --quota(or -U) entry instead of --url. Pools specified with
---url are given a nominal quota value of 1 and entries can be mixed.
-
-For example:
---url poolA:portA -u usernameA -p passA --quota "2;poolB:portB" -u usernameB -p passB
-Will give poolA 1/3 of the work and poolB 2/3 of the work.
-
-Writing configuration files with quotas is likewise supported. To use the above
-quotas in a configuration file they would be specified thus:
-
-"pools" : [
-        {
-                "url" : "poolA:portA",
-                "user" : "usernameA",
-                "pass" : "passA"
-        },
-        {
-                "quota" : "2;poolB:portB",
-                "user" : "usernameB",
-                "pass" : "passB"
-        }
-]
-
-
----
-LOGGING
-
-BFGMiner will log to stderr if it detects stderr is being redirected to a file.
-To enable logging simply add 2>logfile.txt to your command line and logfile.txt
-will contain the logged output at the log level you specify (normal, verbose,
-debug etc.)
-
-In other words if you would normally use:
-./bfgminer -o xxx -u yyy -p zzz
-if you use
-./bfgminer -o xxx -u yyy -p zzz 2>logfile.txt
-it will log to a file called logfile.txt and otherwise work the same.
-
-There is also the -m option on linux which will spawn a command of your choice
-and pipe the output directly to that command.
-
-The WorkTime details 'debug' option adds details on the end of each line
-displayed for Accepted or Rejected work done. An example would be:
-
- <-00000059.ed4834a3 M:X D:1.0 G:17:02:38:0.405 C:1.855 (2.995) W:3.440 (0.000) S:0.461 R:17:02:47
-
-The first 2 hex codes are the previous block hash, the rest are reported in
-seconds unless stated otherwise:
-The previous hash is followed by the getwork mode used M:X where X is one of
-P:Pool, T:Test Pool, L:LP or B:Benchmark,
-then D:d.ddd is the difficulty required to get a share from the work,
-then G:hh:mm:ss:n.nnn, which is when the getwork or LP was sent to the pool and
-the n.nnn is how long it took to reply,
-followed by 'O' on its own if it is an original getwork, or 'C:n.nnn' if it was
-a clone with n.nnn stating how long after the work was recieved that it was
-cloned, (m.mmm) is how long from when the original work was received until work
-started,
-W:n.nnn is how long the work took to process until it was ready to submit,
-(m.mmm) is how long from ready to submit to actually doing the submit, this is
-usually 0.000 unless there was a problem with submitting the work,
-S:n.nnn is how long it took to submit the completed work and await the reply,
-R:hh:mm:ss is the actual time the work submit reply was received
-
-If you start BFGMiner with the --sharelog option, you can get detailed
-information for each share found. The argument to the option may be "-" for
-standard output (not advisable with the ncurses UI), any valid positive number
-for that file descriptor, or a filename.
-
-To log share data to a file named "share.log", you can use either:
-./bfgminer --sharelog 50 -o xxx -u yyy -p zzz 50>share.log
-./bfgminer --sharelog share.log -o xxx -u yyy -p zzz
-
-For every share found, data will be logged in a CSV (Comma Separated Value)
-format:
-    timestamp,disposition,target,pool,dev,thr,sharehash,sharedata
-For example (this is wrapped, but it's all on one line for real):
-    1335313090,reject,
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000,
-    http://localhost:8337,GPU0,0,
-    6f983c918f3299b58febf95ec4d0c7094ed634bc13754553ec34fc3800000000,
-    00000001a0980aff4ce4a96d53f4b89a2d5f0e765c978640fe24372a000001c5
-    000000004a4366808f81d44f26df3d69d7dc4b3473385930462d9ab707b50498
-    f681634a4f1f63d01a0cd43fb338000000000080000000000000000000000000
-    0000000000000000000000000000000000000000000000000000000080020000
-
----
-
-RPC API
-
-For RPC API details see the README.RPC file
-
----
-
-FAQ
-
-Q: Why can't BFGMiner find lib<something> even after I installed it from source
-code?
-A: On UNIX-like operating systems, you often need to run one or more commands to
-reload library caches, such as "ldconfig" or similar. A couple of systems (such
-as Fedora) ship with /usr/local/lib missing from their library search path. In
-this case, you can usually add it like this:
-    echo /usr/local/lib >/etc/ld.so.conf.d/local.conf
-Please note that if your libraries installed into lib64 instead of lib, you
-should use that in the ld.so config file above instead.
-
-Q: BFGMiner segfaults when I change my shell window size.
-A: Older versions of libncurses have a bug to do with refreshing a window
-after a size change. Upgrading to a new version of curses will fix it.
-
-Q: Can I mine on servers from different networks (eg smartcoin and bitcoin) at
-the same time?
-A: No, BFGMiner keeps a database of the block it's working on to ensure it does
-not work on stale blocks, and having different blocks from two networks would
-make it invalidate the work from each other.
-
-Q: Can I configure BFGMiner to mine with different login credentials or pools
-for each separate device?
-A: No such feature has been implemented to support this.
-
-Q: Can I put multiple pools in the config file?
-A: Yes, check the example.conf file. Alternatively, set up everything either on
-the command line or via the menu after startup and choose [S]ettings->[W]rite
-config file and the file will be loaded one each startup.
-
-Q: The build fails with gcc is unable to build a binary.
-A: Remove the "-march=native" component of your CFLAGS as your version of GCC
-does not support it.
-
-Q: Can you implement feature X?
-A: I can, but time is limited, and people who donate are more likely to get
-their feature requests implemented.
-
-Q: Work keeps going to my backup pool even though my primary pool hasn't
-failed?
-A: BFGMiner checks for conditions where the primary pool is lagging and will
-pass some work to the backup servers under those conditions. The reason for
-doing this is to try its absolute best to keep the devices working on something
-useful and not risk idle periods. You can disable this behaviour with the
-option --failover-only.
-
-Q: Is this a virus?
-A: As BFGMiner is being packaged with other trojan scripts, some antivirus
-software is falsely accusing bfgminer.exe as being the actual virus, rather than
-whatever it is being packaged with. If you installed BFGMiner yourself from a
-reputable source then you do not have a virus on your computer. Complain to your
-antivirus software company. They seem to be flagging even source code from
-BFGMiner as malicious now, even though text source files can't do anything by
-themselves.
-
-Q: Can you modify the display to include more of one thing in the output and
-less of another, or can you change the quiet mode or can you add yet another
-output mode?
-A: Everyone will always have their own view of what is important to monitor.
-The defaults are very sane and I have very little interest in changing this
-any further.
-
-Q: Why is my efficiency above/below 1.00?
-A: Efficiency simply means how many shares you return for the amount of
-bandwidth used. It does not correlate with efficient use of your hardware, and
-is a measure of a combination of hardware speed, block luck, pool design and
-many other factors.
-
-Q: What are the best parameters to pass for X pool/hardware/device.
-A: Virtually always, the DEFAULT parameters give the best results. Most user
-defined settings lead to worse performance.
-
-Q: What happened to CPU mining?
-A: See README.CPU for more information.
-
-Q: Is there a GUI version?
-A: Yes, Nate Woolls maintains a GUI interface for BFGMiner called MultiMiner,
-available at http://multiminerapp.com
-
-Q: I'm having an issue. What debugging information should I provide?
-A: Start BFGMiner with your regular commands and add -D -T --verbose and provide
-the full startup output and a summary of your hardware, operating system, and if
-applicable, ATI driver version and ATI stream version.
-
-Q: Can I mine with BFGMiner on a Mac?
-A: BFGMiner will compile on OS X, but the performance of GPU mining is
-compromised due to the OpenCL implementation on OS X, there is no temperature or
-fanspeed monitoring and the cooling design of most Macs, despite having
-powerful GPUs, will usually not cope with constant usage leading to a high risk
-of thermal damage. It is highly recommended not to mine on a Mac unless it is
-with an external USB device.
-
-Q: My network gets slower and slower and then dies for a minute?
-A; Try the --net-delay option if you are on a getwork or GBT server.
-
-Q: How do I tune for P2Pool?
-A: P2Pool has very rapid expiration of work and new blocks, it is suggested you
-decrease intensity by 1 from your optimal value, and decrease GPU threads to 1
-with -g 1. It is also recommended to use --failover-only since the work is
-effectively like a different block chain. If mining with a Mini Rig, it is worth
-adding the --bfl-range option.
-
-Q: Are OpenCL kernels from other mining software useable in BFGMiner?
-A: No, the APIs are slightly different between the different software and they
-will not work.
-
-Q: I run PHP on windows to access the API with the example miner.php. Why does
-it fail when php is installed properly but I only get errors about Sockets not
-working in the logs?
-A: Please check http://us.php.net/manual/en/sockets.installation.php
-
-Q: What is a PGA?
-A: At the moment, BFGMiner supports 5 FPGAs: BitForce, Icarus, ModMiner, X6500,
-and ZTEX.
-They are Field-Programmable Gate Arrays that have been programmed to do Bitcoin
-mining. Since the acronym needs to be only 3 characters, the "Field-" part has
-been skipped. "PGA" is also used for devices built with Application-Specific
-Integrated Circuits (ASICs).
-
-Q: What is an ASIC?
-A: They are Application Specific Integrated Circuit devices and provide the
-highest performance per unit power due to being dedicated to only one purpose.
-
-Q: How do I get my BFL/Icarus/Lancelot/Cairnsmore device to auto-recognise?
-A: On Linux, if the /dev/ttyUSB* devices don't automatically appear, the only
-thing that needs to be done is to load the driver for them:
-  BitForce:   sudo modprobe ftdi_sio vendor=0x0403 product=0x6014
-  Erupter:    sudo modprobe cp210x   vendor=0x10c4 product=0xea60
-  Icarus:     sudo modprobe pl2303   vendor=0x067b product=0x0230
-  Lancelot:   sudo modprobe ftdi_sio vendor=0x0403 product=0x6001
-  Cairnsmore: sudo modprobe ftdi_sio vendor=0x0403 product=0x8350
-On some systems you must manally install the driver required for the device.
-OpenWrt drivers (install with opkg):
-  FTDI:       kmod-usb-serial-ftdi
-  Erupter:    kmod-usb-serial-cp210x
-  Icarus:     kmod-usb-serial-pl2303
-Windows drivers:
-  FTDI:       http://www.ftdichip.com/Drivers/VCP.htm
-  Erupter:    http://www.silabs.com/products/mcu/pages/usbtouartbridgevcpdrivers.aspx
-  Icarus:     http://prolificusa.com/pl-2303hx-drivers/
-
-Q: I ran cgminer, and now BFGMiner doesn't work!
-A: cgminer has its own non-standard implementations of the drivers for most USB
-devices, and requires you to replace the official drivers with WinUSB on Windows
-(usually using Zadig). Before you can use BFGMiner, you will need to restore the
-original driver. Uninstalling the device (and WinUSB driver) from Device Manager
-and re-plugging it will usually trigger driver re-installation to the default
-drivers.
-
-Q: On Linux I can see the /dev/ttyUSB* devices, but BFGMiner can't mine on them?
-A: Make sure you have the required privileges to access the /dev/ttyUSB*
-devices:
- sudo ls -las /dev/ttyUSB*
-will give output like:
- 0 crw-rw---- 1 root video   188, 0 2012-09-11 13:49 /dev/ttyUSB0
-This means your account must have the group 'video' or root privileges.
-To permanently give your account the 'video' group:
- sudo usermod -G video -a `whoami`
-Then logout and back in again.
-
-Q: Can I mine scrypt with FPGAs or ASICs?
-A: Currently no. Bitcoin ASICs are only useful for SHA256d systems and FPGAs
-generally aren't designed to handle scrypt efficiently.
-
-Q: Why does BFGMiner show difficulty 0 when mining scrypt?
-A: BFGMiner consistently uses pdiff measurement for difficulty everywhere,
-rather than other measurements that may exist. For scrypt, pdiff 1 is very
-difficult, and higher get exponentially harder. It is unlikely you will want to
-use pdiff 1+ with scrypt until you have FPGAs and/or ASICs for it.
-
-Q: What is stratum and how do I use it?
-A: Stratum is a protocol designed to reduce resources for mining pools at the
-cost of keeping the miner in the dark and blindly transferring his mining
-authority to the pool. It is a return to the problems of the old centralized
-"getwork" protocol, but capable of scaling to hardware of any speed like the
-standard GBT protocol. If a pool uses stratum instead of GBT, BFGMiner will
-automatically detect it and switch to the support as advertised if it can.
-Stratum uses direct TCP connections to the pool and thus it will NOT currently
-work through a http proxy but will work via a socks proxy if you need to use
-one. If you input the stratum port directly into your configuration, or use the
-special prefix "stratum+tcp://" instead of "http://", BFGMiner will ONLY try to
-use stratum protocol mining.
-
-Q: Why don't the statistics add up: Accepted, Rejected, Stale, Hardware Errors,
-Diff1 Work, etc. when mining greater than 1 difficulty shares?
-A: As an example, if you look at 'Difficulty Accepted' in the RPC API, the number
-of difficulty shares accepted does not usually exactly equal the amount of work
-done to find them. If you are mining at 8 difficulty, then you would expect on
-average to find one 8 difficulty share, per 8 single difficulty shares found.
-However, the number is actually random and converges over time as it is an
-average, not an exact value, thus you may find more or less than the expected
-average.
-
----
-
-This code is provided entirely free of charge by the programmer in his spare
-time so donations would be greatly appreciated. Please consider donating to the
-address below.
-
-Luke-Jr <luke-jr+bfgminer@utopios.org>
-1QATWksNFGeUJCWBrN4g6hGM178Lovm7Wh
+The Corresponding Source for a work in source code form is that same work.
+
+2. Basic Permissions.
+All rights granted under this License are granted for the term of copyright on the Program, and are irrevocable provided the stated conditions are met. This License explicitly affirms your unlimited permission to run the unmodified Program. The output from running a covered work is covered by this License only if the output, given its content, constitutes a covered work. This License acknowledges your rights of fair use or other equivalent, as provided by copyright law.
+
+You may make, run and propagate covered works that you do not convey, without conditions so long as your license otherwise remains in force. You may convey covered works to others for the sole purpose of having them make modifications exclusively for you, or provide you with facilities for running those works, provided that you comply with the terms of this License in conveying all material for which you do not control copyright. Those thus making or running the covered works for you must do so exclusively on your behalf, under your direction and control, on terms that prohibit them from making any copies of your copyrighted material outside their relationship with you.
+
+Conveying under any other circumstances is permitted solely under the conditions stated below. Sublicensing is not allowed; section 10 makes it unnecessary.
+
+3. Protecting Users' Legal Rights From Anti-Circumvention Law.
+No covered work shall be deemed part of an effective technological measure under any applicable law fulfilling obligations under article 11 of the WIPO copyright treaty adopted on 20 December 1996, or similar laws prohibiting or restricting circumvention of such measures.
+
+When you convey a covered work, you waive any legal power to forbid circumvention of technological measures to the extent such circumvention is effected by exercising rights under this License with respect to the covered work, and you disclaim any intention to limit operation or modification of the work as a means of enforcing, against the work's users, your or third parties' legal rights to forbid circumvention of technological measures.
+
+4. Conveying Verbatim Copies.
+You may convey verbatim copies of the Program's source code as you receive it, in any medium, provided that you conspicuously and appropriately publish on each copy an appropriate copyright notice; keep intact all notices stating that this License and any non-permissive terms added in accord with section 7 apply to the code; keep intact all notices of the absence of any warranty; and give all recipients a copy of this License along with the Program.
+
+You may charge any price or no price for each copy that you convey, and you may offer support or warranty protection for a fee.
+
+5. Conveying Modified Source Versions.
+You may convey a work based on the Program, or the modifications to produce it from the Program, in the form of source code under the terms of section 4, provided that you also meet all of these conditions:
+
+a) The work must carry prominent notices stating that you modified it, and giving a relevant date.
+b) The work must carry prominent notices stating that it is released under this License and any conditions added under section 7. This requirement modifies the requirement in section 4 to “keep intact all notices”.
+c) You must license the entire work, as a whole, under this License to anyone who comes into possession of a copy. This License will therefore apply, along with any applicable section 7 additional terms, to the whole of the work, and all its parts, regardless of how they are packaged. This License gives no permission to license the work in any other way, but it does not invalidate such permission if you have separately received it.
+d) If the work has interactive user interfaces, each must display Appropriate Legal Notices; however, if the Program has interactive interfaces that do not display Appropriate Legal Notices, your work need not make them do so.
+A compilation of a covered work with other separate and independent works, which are not by their nature extensions of the covered work, and which are not combined with it such as to form a larger program, in or on a volume of a storage or distribution medium, is called an “aggregate” if the compilation and its resulting copyright are not used to limit the access or legal rights of the compilation's users beyond what the individual works permit. Inclusion of a covered work in an aggregate does not cause this License to apply to the other parts of the aggregate.
+
+6. Conveying Non-Source Forms.
+You may convey a covered work in object code form under the terms of sections 4 and 5, provided that you also convey the machine-readable Corresponding Source under the terms of this License, in one of these ways:
+
+a) Convey the object code in, or embodied in, a physical product (including a physical distribution medium), accompanied by the Corresponding Source fixed on a durable physical medium customarily used for software interchange.
+b) Convey the object code in, or embodied in, a physical product (including a physical distribution medium), accompanied by a written offer, valid for at least three years and valid for as long as you offer spare parts or customer support for that product model, to give anyone who possesses the object code either (1) a copy of the Corresponding Source for all the software in the product that is covered by this License, on a durable physical medium customarily used for software interchange, for a price no more than your reasonable cost of physically performing this conveying of source, or (2) access to copy the Corresponding Source from a network server at no charge.
+c) Convey individual copies of the object code with a copy of the written offer to provide the Corresponding Source. This alternative is allowed only occasionally and noncommercially, and only if you received the object code with such an offer, in accord with subsection 6b.
+d) Convey the object code by offering access from a designated place (gratis or for a charge), and offer equivalent access to the Corresponding Source in the same way through the same place at no further charge. You need not require recipients to copy the Corresponding Source along with the object code. If the place to copy the object code is a network server, the Corresponding Source may be on a different server (operated by you or a third party) that supports equivalent copying facilities, provided you maintain clear directions next to the object code saying where to find the Corresponding Source. Regardless of what server hosts the Corresponding Source, you remain obligated to ensure that it is available for as long as needed to satisfy these requirements.
+e) Convey the object code using peer-to-peer transmission, provided you inform other peers where the object code and Corresponding Source of the work are being offered to the general public at no charge under subsection 6d.
+A separable portion of the object code, whose source code is excluded from the Corresponding Source as a System Library, need not be included in conveying the object code work.
+
+A “User Product” is either (1) a “consumer product”, which means any tangible personal property which is normally used for personal, family, or household purposes, or (2) anything designed or sold for incorporation into a dwelling. In determining whether a product is a consumer product, doubtful cases shall be resolved in favor of coverage. For a particular product received by a particular user, “normally used” refers to a typical or common use of that class of product, regardless of the status of the particular user or of the way in which the particular user actually uses, or expects or is expected to use, the product. A product is a consumer product regardless of whether the product has substantial commercial, industrial or non-consumer uses, unless such uses represent the only significant mode of use of the product.
+
+“Installation Information” for a User Product means any methods, procedures, authorization keys, or other information required to install and execute modified versions of a covered work in that User Product from a modified version of its Corresponding Source. The information must suffice to ensure that the continued functioning of the modified object code is in no case prevented or interfered with solely because modification has been made.
+
+If you convey an object code work under this section in, or with, or specifically for use in, a User Product, and the conveying occurs as part of a transaction in which the right of possession and use of the User Product is transferred to the recipient in perpetuity or for a fixed term (regardless of how the transaction is characterized), the Corresponding Source conveyed under this section must be accompanied by the Installation Information. But this requirement does not apply if neither you nor any third party retains the ability to install modified object code on the User Product (for example, the work has been installed in ROM).
+
+The requirement to provide Installation Information does not include a requirement to continue to provide support service, warranty, or updates for a work that has been modified or installed by the recipient, or for the User Product in which it has been modified or installed. Access to a network may be denied when the modification itself materially and adversely affects the operation of the network or violates the rules and protocols for communication across the network.
+
+Corresponding Source conveyed, and Installation Information provided, in accord with this section must be in a format that is publicly documented (and with an implementation available to the public in source code form), and must require no special password or key for unpacking, reading or copying.
+
+7. Additional Terms.
+“Additional permissions” are terms that supplement the terms of this License by making exceptions from one or more of its conditions. Additional permissions that are applicable to the entire Program shall be treated as though they were included in this License, to the extent that they are valid under applicable law. If additional permissions apply only to part of the Program, that part may be used separately under those permissions, but the entire Program remains governed by this License without regard to the additional permissions.
+
+When you convey a copy of a covered work, you may at your option remove any additional permissions from that copy, or from any part of it. (Additional permissions may be written to require their own removal in certain cases when you modify the work.) You may place additional permissions on material, added by you to a covered work, for which you have or can give appropriate copyright permission.
+
+Notwithstanding any other provision of this License, for material you add to a covered work, you may (if authorized by the copyright holders of that material) supplement the terms of this License with terms:
+
+a) Disclaiming warranty or limiting liability differently from the terms of sections 15 and 16 of this License; or
+b) Requiring preservation of specified reasonable legal notices or author attributions in that material or in the Appropriate Legal Notices displayed by works containing it; or
+c) Prohibiting misrepresentation of the origin of that material, or requiring that modified versions of such material be marked in reasonable ways as different from the original version; or
+d) Limiting the use for publicity purposes of names of licensors or authors of the material; or
+e) Declining to grant rights under trademark law for use of some trade names, trademarks, or service marks; or
+f) Requiring indemnification of licensors and authors of that material by anyone who conveys the material (or modified versions of it) with contractual assumptions of liability to the recipient, for any liability that these contractual assumptions directly impose on those licensors and authors.
+All other non-permissive additional terms are considered “further restrictions” within the meaning of section 10. If the Program as you received it, or any part of it, contains a notice stating that it is governed by this License along with a term that is a further restriction, you may remove that term. If a license document contains a further restriction but permits relicensing or conveying under this License, you may add to a covered work material governed by the terms of that license document, provided that the further restriction does not survive such relicensing or conveying.
+
+If you add terms to a covered work in accord with this section, you must place, in the relevant source files, a statement of the additional terms that apply to those files, or a notice indicating where to find the applicable terms.
+
+Additional terms, permissive or non-permissive, may be stated in the form of a separately written license, or stated as exceptions; the above requirements apply either way.
+
+8. Termination.
+You may not propagate or modify a covered work except as expressly provided under this License. Any attempt otherwise to propagate or modify it is void, and will automatically terminate your rights under this License (including any patent licenses granted under the third paragraph of section 11).
+
+However, if you cease all violation of this License, then your license from a particular copyright holder is reinstated (a) provisionally, unless and until the copyright holder explicitly and finally terminates your license, and (b) permanently, if the copyright holder fails to notify you of the violation by some reasonable means prior to 60 days after the cessation.
+
+Moreover, your license from a particular copyright holder is reinstated permanently if the copyright holder notifies you of the violation by some reasonable means, this is the first time you have received notice of violation of this License (for any work) from that copyright holder, and you cure the violation prior to 30 days after your receipt of the notice.
+
+Termination of your rights under this section does not terminate the licenses of parties who have received copies or rights from you under this License. If your rights have been terminated and not permanently reinstated, you do not qualify to receive new licenses for the same material under section 10.
+
+9. Acceptance Not Required for Having Copies.
+You are not required to accept this License in order to receive or run a copy of the Program. Ancillary propagation of a covered work occurring solely as a consequence of using peer-to-peer transmission to receive a copy likewise does not require acceptance. However, nothing other than this License grants you permission to propagate or modify any covered work. These actions infringe copyright if you do not accept this License. Therefore, by modifying or propagating a covered work, you indicate your acceptance of this License to do so.
+
+10. Automatic Licensing of Downstream Recipients.
+Each time you convey a covered work, the recipient automatically receives a license from the original licensors, to run, modify and propagate that work, subject to this License. You are not responsible for enforcing compliance by third parties with this License.
+
+An “entity transaction” is a transaction transferring control of an organization, or substantially all assets of one, or subdividing an organization, or merging organizations. If propagation of a covered work results from an entity transaction, each party to that transaction who receives a copy of the work also receives whatever licenses to the work the party's predecessor in interest had or could give under the previous paragraph, plus a right to possession of the Corresponding Source of the work from the predecessor in interest, if the predecessor has it or can get it with reasonable efforts.
+
+You may not impose any further restrictions on the exercise of the rights granted or affirmed under this License. For example, you may not impose a license fee, royalty, or other charge for exercise of rights granted under this License, and you may not initiate litigation (including a cross-claim or counterclaim in a lawsuit) alleging that any patent claim is infringed by making, using, selling, offering for sale, or importing the Program or any portion of it.
+
+11. Patents.
+A “contributor” is a copyright holder who authorizes use under this License of the Program or a work on which the Program is based. The work thus licensed is called the contributor's “contributor version”.
+
+A contributor's “essential patent claims” are all patent claims owned or controlled by the contributor, whether already acquired or hereafter acquired, that would be infringed by some manner, permitted by this License, of making, using, or selling its contributor version, but do not include claims that would be infringed only as a consequence of further modification of the contributor version. For purposes of this definition, “control” includes the right to grant patent sublicenses in a manner consistent with the requirements of this License.
+
+Each contributor grants you a non-exclusive, worldwide, royalty-free patent license under the contributor's essential patent claims, to make, use, sell, offer for sale, import and otherwise run, modify and propagate the contents of its contributor version.
+
+In the following three paragraphs, a “patent license” is any express agreement or commitment, however denominated, not to enforce a patent (such as an express permission to practice a patent or covenant not to sue for patent infringement). To “grant” such a patent license to a party means to make such an agreement or commitment not to enforce a patent against the party.
+
+If you convey a covered work, knowingly relying on a patent license, and the Corresponding Source of the work is not available for anyone to copy, free of charge and under the terms of this License, through a publicly available network server or other readily accessible means, then you must either (1) cause the Corresponding Source to be so available, or (2) arrange to deprive yourself of the benefit of the patent license for this particular work, or (3) arrange, in a manner consistent with the requirements of this License, to extend the patent license to downstream recipients. “Knowingly relying” means you have actual knowledge that, but for the patent license, your conveying the covered work in a country, or your recipient's use of the covered work in a country, would infringe one or more identifiable patents in that country that you have reason to believe are valid.
+
+If, pursuant to or in connection with a single transaction or arrangement, you convey, or propagate by procuring conveyance of, a covered work, and grant a patent license to some of the parties receiving the covered work authorizing them to use, propagate, modify or convey a specific copy of the covered work, then the patent license you grant is automatically extended to all recipients of the covered work and works based on it.
+
+A patent license is “discriminatory” if it does not include within the scope of its coverage, prohibits the exercise of, or is conditioned on the non-exercise of one or more of the rights that are specifically granted under this License. You may not convey a covered work if you are a party to an arrangement with a third party that is in the business of distributing software, under which you make payment to the third party based on the extent of your activity of conveying the work, and under which the third party grants, to any of the parties who would receive the covered work from you, a discriminatory patent license (a) in connection with copies of the covered work conveyed by you (or copies made from those copies), or (b) primarily for and in connection with specific products or compilations that contain the covered work, unless you entered into that arrangement, or that patent license was granted, prior to 28 March 2007.
+
+Nothing in this License shall be construed as excluding or limiting any implied license or other defenses to infringement that may otherwise be available to you under applicable patent law.
+
+12. No Surrender of Others' Freedom.
+If conditions are imposed on you (whether by court order, agreement or otherwise) that contradict the conditions of this License, they do not excuse you from the conditions of this License. If you cannot convey a covered work so as to satisfy simultaneously your obligations under this License and any other pertinent obligations, then as a consequence you may not convey it at all. For example, if you agree to terms that obligate you to collect a royalty for further conveying from those to whom you convey the Program, the only way you could satisfy both those terms and this License would be to refrain entirely from conveying the Program.
+
+13. Use with the GNU Affero General Public License.
+Notwithstanding any other provision of this License, you have permission to link or combine any covered work with a work licensed under version 3 of the GNU Affero General Public License into a single combined work, and to convey the resulting work. The terms of this License will continue to apply to the part which is the covered work, but the special requirements of the GNU Affero General Public License, section 13, concerning interaction through a network will apply to the combination as such.
+
+14. Revised Versions of this License.
+The Free Software Foundation may publish revised and/or new versions of the GNU General Public License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns.
+
+Each version is given a distinguishing version number. If the Program specifies that a certain numbered version of the GNU General Public License “or any later version” applies to it, you have the option of following the terms and conditions either of that numbered version or of any later version published by the Free Software Foundation. If the Program does not specify a version number of the GNU General Public License, you may choose any version ever published by the Free Software Foundation.
+
+If the Program specifies that a proxy can decide which future versions of the GNU General Public License can be used, that proxy's public statement of acceptance of a version permanently authorizes you to choose that version for the Program.
+
+Later license versions may give you additional or different permissions. However, no additional obligations are imposed on any author or copyright holder as a result of your choosing to follow a later version.
+
+15. Disclaimer of Warranty.
+THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+16. Limitation of Liability.
+IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+17. Interpretation of Sections 15 and 16.
+If the disclaimer of warranty and limitation of liability provided above cannot be given local legal effect according to their terms, reviewing courts shall apply local law that most closely approximates an absolute waiver of all civil liability in connection with the Program, unless a warranty or assumption of liability accompanies a copy of the Program in return for a fee.
+
+END OF TERMS AND CONDITIONS
